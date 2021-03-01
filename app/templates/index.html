@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>hello, {{ customer_name }}</h4>
+<h6>Username: {{ customer_username }}</h6>
+    <p>These are the items</p>
+    <ul>
+        {% for key, item in items.items() %}
+            {% if item == 'bread' %}
+                <li>{{ item }} - {{ key }}</li>
+            {% else %}
+                <li>{{ key }} - {{ item }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <p>here are your followers</p>
+    {% for follower in followers %}
+        <h6>{{ follower.username }}</h6>
+        <h4>{{ follower.created_at }}</h4>
+    {% endfor %}
+{% endblock content %}
