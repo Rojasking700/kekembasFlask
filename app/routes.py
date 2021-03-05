@@ -131,7 +131,7 @@ def postupdate(post_id):
     update_form = PostForm()
 
     if post.author.id != current_user.id:
-        flash("You cannot delte another user's post", 'danger')
+        flash("You cannot update another user's post", 'danger')
         return redirect(url_for('myposts'))
 
     if request.method == 'POST' and update_form.validate():
