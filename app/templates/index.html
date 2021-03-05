@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="banner">
-    <h1 class="header-text">Welcom to the Kekambas blog</h1>
-</div>
+    <div class="banner">
+        <h1 class="header-text">Welcome to the Kekambas blog</h1>
+    </div>
 
-<h4>hello, {{ customer_name }}</h4>
-<h6>Username: {{ customer_username }}</h6>
+    {%if current_user.is_authenticated %}   
+        <h4>hello, {{ current_user.username }}</h4>
+    {% else %}
+        <h4>Hello, please register for our <a href="{{ url_for('register') }}">blog</a></h4>
+    {% endif %}
+
+    {% for p in posts %}
+        <h3>{{ p.title }}</h3>
+        <h6>By: {{ p.author.username }}</h6>
+        <p>{{ p.content }}</p>
+        <hr>
+    {% endfor %}
 
 {% endblock content %}
