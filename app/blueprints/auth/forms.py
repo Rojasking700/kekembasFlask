@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, EqualTo, Email
 
 
@@ -10,10 +10,6 @@ class UserInfoForm(FlaskForm):
     confirm_pass = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField()
 
-# class PostForm(FlaskForm):
-#     title = StringField('Title', validators=[DataRequired()])
-#     content = TextAreaField('Content', validators=[DataRequired()])
-#     submit = SubmitField()
 
 class LoginForm(FlaskForm):
     username = StringField('username',validators=[DataRequired()])
